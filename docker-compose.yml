@@ -33,7 +33,9 @@ services:
       - postiz-redis
       - temporal
     networks:
-      - dokploy-network
+      dokploy-network:
+        aliases:
+          - postiz-app
 
   postiz-postgres:
     image: postgres:17-alpine
@@ -50,7 +52,9 @@ services:
       timeout: 3s
       retries: 10
     networks:
-      - dokploy-network
+      dokploy-network:
+        aliases:
+          - postiz-postgres
 
   postiz-redis:
     image: redis:7.2
@@ -64,7 +68,9 @@ services:
     volumes:
       - postiz-redis-data:/data
     networks:
-      - dokploy-network
+      dokploy-network:
+        aliases:
+          - postiz-redis
 
   temporal-postgresql:
     image: postgres:16
@@ -81,7 +87,9 @@ services:
       timeout: 3s
       retries: 10
     networks:
-      - dokploy-network
+      dokploy-network:
+        aliases:
+          - temporal-postgresql
 
   temporal-elasticsearch:
     image: elasticsearch:7.17.27
@@ -97,7 +105,9 @@ services:
     volumes:
       - temporal-elasticsearch-data:/usr/share/elasticsearch/data
     networks:
-      - dokploy-network
+      dokploy-network:
+        aliases:
+          - temporal-elasticsearch
 
   temporal:
     image: temporalio/auto-setup:1.28.1
@@ -119,7 +129,9 @@ services:
     volumes:
       - ./dynamicconfig:/etc/temporal/config/dynamicconfig
     networks:
-      - dokploy-network
+      dokploy-network:
+        aliases:
+          - temporal
 
 volumes:
   postiz-postgres-data:
