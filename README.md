@@ -17,7 +17,6 @@ Create a Compose app from this repo and set these environment variables:
 - `DB_USER`
 - `DB_PASSWORD`
 - `DB_NAME`
-- `DOKPLOY_NETWORK`
 
 For the domain in Dokploy UI:
 
@@ -30,6 +29,6 @@ For the domain in Dokploy UI:
 
 ## Notes
 
-- This repo expects Dokploy to provide the external project network name through `DOKPLOY_NETWORK`.
+- This repo expects Dokploy's standard external `dokploy-network` to exist.
 - Do not add manual Traefik labels in the compose if Dokploy is managing the domain in the UI.
 - If you want to pin Postiz later, replace `ghcr.io/gitroomhq/postiz-app:latest` with a versioned tag.

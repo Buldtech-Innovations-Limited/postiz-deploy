@@ -143,5 +143,4 @@ volumes:
 
 networks:
   dokploy-network:
-    name: ${DOKPLOY_NETWORK}
     external: true
