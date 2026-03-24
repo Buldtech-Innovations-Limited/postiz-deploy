@@ -7,7 +7,7 @@ services:
     deploy:
       labels:
         - traefik.enable=true
-        - traefik.docker.network=dokploy-network
+        - traefik.swarm.network=dokploy-network
         - traefik.http.routers.buldtech-postiz-web.rule=Host(`${POSTIZ_HOST}`)
         - traefik.http.routers.buldtech-postiz-web.entrypoints=web
         - traefik.http.routers.buldtech-postiz-web.middlewares=redirect-to-https@file
