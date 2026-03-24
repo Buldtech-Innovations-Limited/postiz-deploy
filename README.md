@@ -17,6 +17,8 @@ Create a Compose app from this repo and set these environment variables:
 - `DB_USER`
 - `DB_PASSWORD`
 - `DB_NAME`
+- `X_API_KEY`
+- `X_API_SECRET`
 - `LINKEDIN_CLIENT_ID`
 - `LINKEDIN_CLIENT_SECRET`
 - `TIKTOK_CLIENT_ID`

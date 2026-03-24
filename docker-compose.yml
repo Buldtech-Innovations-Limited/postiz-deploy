@@ -46,6 +46,8 @@ services:
       DATABASE_URL: postgresql://${DB_USER}:${DB_PASSWORD}@postiz-postgres:5432/${DB_NAME}
       REDIS_URL: redis://postiz-redis:6379
       TEMPORAL_ADDRESS: temporal:7233
+      X_API_KEY: ${X_API_KEY}
+      X_API_SECRET: ${X_API_SECRET}
       LINKEDIN_CLIENT_ID: ${LINKEDIN_CLIENT_ID}
       LINKEDIN_CLIENT_SECRET: ${LINKEDIN_CLIENT_SECRET}
       TIKTOK_CLIENT_ID: ${TIKTOK_CLIENT_ID}
