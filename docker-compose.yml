@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   postiz-app:
-    image: ghcr.io/gitroomhq/postiz-app:latest
+    image: ghcr.io/gitroomhq/postiz-app:v2.21.0
     restart: always
     deploy:
       labels:
