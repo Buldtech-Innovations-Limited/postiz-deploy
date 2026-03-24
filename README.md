@@ -27,4 +27,5 @@ Create a Compose app from this repo and set these environment variables:
 - Leave the Dokploy `Domains` tab empty for this stack to avoid duplicate label generation.
 - `postiz-app` is pinned to `ghcr.io/gitroomhq/postiz-app:v2.21.0` for predictable redeploys.
 - Upgrade Postiz intentionally by changing that tag to a reviewed upstream release.
+- `postiz-app` uses an explicit Swarm rolling update policy and healthcheck so redeploys are start-first and can roll back more safely.
 - Rotate `JWT_SECRET` and `YOUTUBE_CLIENT_SECRET` in Dokploy after the earlier credential exposure.

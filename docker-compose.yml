@@ -4,7 +4,25 @@ services:
   postiz-app:
     image: ghcr.io/gitroomhq/postiz-app:v2.21.0
     restart: always
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "node -e \"fetch('http://localhost:5000/api/public/v1/is-connected').then(r => process.exit((r.status === 200 || r.status === 401) ? 0 : 1)).catch(() => process.exit(1))\"",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
     deploy:
+      update_config:
+        parallelism: 1
+        order: start-first
+        failure_action: rollback
+        delay: 5s
+      rollback_config:
+        parallelism: 1
+        order: stop-first
       labels:
         - traefik.enable=true
         - traefik.swarm.network=dokploy-network
