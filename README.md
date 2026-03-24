@@ -18,17 +18,9 @@ Create a Compose app from this repo and set these environment variables:
 - `DB_PASSWORD`
 - `DB_NAME`
 
-For the domain in Dokploy UI:
-
-- Service: `postiz-app`
-- Host: `socials.buldtech.com`
-- Path: `/`
-- Internal Path: `/`
-- Container Port: `5000`
-- HTTPS: enabled
-
 ## Notes
 
 - This repo expects Dokploy's standard external `dokploy-network` to exist.
-- Do not add manual Traefik labels in the compose if Dokploy is managing the domain in the UI.
+- Routing is managed directly in `docker-compose.yml` through Traefik labels.
+- Leave the Dokploy `Domains` tab empty for this stack to avoid duplicate label generation.
 - If you want to pin Postiz later, replace `ghcr.io/gitroomhq/postiz-app:latest` with a versioned tag.

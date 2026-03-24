@@ -4,6 +4,19 @@ services:
   postiz-app:
     image: ghcr.io/gitroomhq/postiz-app:latest
     restart: always
+    deploy:
+      labels:
+        - traefik.enable=true
+        - traefik.docker.network=dokploy-network
+        - traefik.http.routers.postiz-web.rule=Host(`${POSTIZ_HOST}`)
+        - traefik.http.routers.postiz-web.entrypoints=web
+        - traefik.http.routers.postiz-web.middlewares=redirect-to-https@file
+        - traefik.http.routers.postiz-web.service=postiz
+        - traefik.http.routers.postiz-websecure.rule=Host(`${POSTIZ_HOST}`)
+        - traefik.http.routers.postiz-websecure.entrypoints=websecure
+        - traefik.http.routers.postiz-websecure.tls.certresolver=letsencrypt
+        - traefik.http.routers.postiz-websecure.service=postiz
+        - traefik.http.services.postiz.loadbalancer.server.port=5000
     environment:
       MAIN_URL: https://${POSTIZ_HOST}
       FRONTEND_URL: https://${POSTIZ_HOST}
