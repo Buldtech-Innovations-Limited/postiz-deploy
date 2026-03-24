@@ -17,6 +17,8 @@ Create a Compose app from this repo and set these environment variables:
 - `DB_USER`
 - `DB_PASSWORD`
 - `DB_NAME`
+- `YOUTUBE_CLIENT_ID`
+- `YOUTUBE_CLIENT_SECRET`
 
 ## Notes
 
