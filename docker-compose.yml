@@ -8,15 +8,16 @@ services:
       labels:
         - traefik.enable=true
         - traefik.docker.network=dokploy-network
-        - traefik.http.routers.postiz-web.rule=Host(`${POSTIZ_HOST}`)
-        - traefik.http.routers.postiz-web.entrypoints=web
-        - traefik.http.routers.postiz-web.middlewares=redirect-to-https@file
-        - traefik.http.routers.postiz-web.service=postiz
-        - traefik.http.routers.postiz-websecure.rule=Host(`${POSTIZ_HOST}`)
-        - traefik.http.routers.postiz-websecure.entrypoints=websecure
-        - traefik.http.routers.postiz-websecure.tls.certresolver=letsencrypt
-        - traefik.http.routers.postiz-websecure.service=postiz
-        - traefik.http.services.postiz.loadbalancer.server.port=5000
+        - traefik.http.routers.buldtech-postiz-web.rule=Host(`${POSTIZ_HOST}`)
+        - traefik.http.routers.buldtech-postiz-web.entrypoints=web
+        - traefik.http.routers.buldtech-postiz-web.middlewares=redirect-to-https@file
+        - traefik.http.routers.buldtech-postiz-web.service=buldtech-postiz
+        - traefik.http.routers.buldtech-postiz-websecure.rule=Host(`${POSTIZ_HOST}`)
+        - traefik.http.routers.buldtech-postiz-websecure.entrypoints=websecure
+        - traefik.http.routers.buldtech-postiz-websecure.tls=true
+        - traefik.http.routers.buldtech-postiz-websecure.tls.certresolver=letsencrypt
+        - traefik.http.routers.buldtech-postiz-websecure.service=buldtech-postiz
+        - traefik.http.services.buldtech-postiz.loadbalancer.server.port=5000
     environment:
       MAIN_URL: https://${POSTIZ_HOST}
       FRONTEND_URL: https://${POSTIZ_HOST}
